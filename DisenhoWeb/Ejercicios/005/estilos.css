@@ -1,0 +1,25 @@
+body{
+    height: 100vh;
+    text-align: center;
+    line-height: 100vh;
+    
+}
+/*--------------------------------------------------------------*/
+.ladoIzq{
+    background-color: lightblue;
+    float:left
+}
+
+.espacioCentral{
+    background-color: lightgreen;
+    float: left;
+    width: calc(60% - 6px);
+    min-width: 400px;
+    text-align: center;
+}
+
+.ladoDer{
+    background-color: lightcoral;
+    float:right
+}
+/*--------------------------------------------------------------*/
