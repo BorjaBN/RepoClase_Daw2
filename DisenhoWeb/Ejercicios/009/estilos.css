@@ -1,0 +1,58 @@
+*{
+    text-align: center;
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+/*-------------------------------------------------------------------------------*/
+
+.contenedorElementos {
+    padding: 10px;
+    font-weight: bold;
+
+}
+
+header {
+    background: orange;
+    width: 100%;
+    margin-bottom: 10px;
+    min-height: 100px;
+}
+
+nav {
+    background: limegreen;
+    float: left;
+    width: 20%;          
+    min-height: 460px;
+    margin-right: 10px;
+}
+
+main {
+    background: khaki;
+    float: left;
+    width: calc(100% - 20% - 25% - 20px);
+    min-height: 460px;
+    margin-right: 10px;
+    margin-bottom: 10px;
+}
+
+aside {
+    background: steelblue;
+    float: left;
+    width: 25%;          
+    min-height: 460px;
+}
+
+footer {
+    background: pink;
+    width: 100%;
+    clear: both; /*Esto lo tuve que buscar porque no sabía como 
+                hacer que el pie no me pasase por encima de todo*/
+    /*Sirve para limpiar los float*/
+    min-height: 100px;
+
+}
+
+
+  
