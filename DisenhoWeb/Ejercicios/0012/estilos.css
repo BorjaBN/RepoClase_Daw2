@@ -1,0 +1,69 @@
+/*---------------------Cosas Generales---------------------------*/
+body{
+    margin: 0;
+    padding: 0;
+    height: 100%; /* importante para que ocupe toda la altura */
+    
+
+}
+
+/*-------------------Cabecera--------------------------*/
+
+header{
+   
+    text-align: center;
+    float: left;
+    width: calc(100%);
+    min-height: 100px;
+}
+.botoneraArriba{
+    padding-top: 50px;
+    padding-bottom: 50px;
+}
+a{
+    padding-left: 40px;
+    color:black
+}
+
+/*-----------------Main-------------------------*/
+main{
+    float: left;
+    width: calc(100% - 200px);
+}
+.articulo1{
+    
+    height: 400px;
+    
+}
+.articulo2{
+    
+    height: 400px;
+    
+}
+.articulo3{
+   
+    height: 400px;
+    
+}
+.publicidadArea{
+    
+    float: right;
+    width: 200px;
+    height: 1200px;
+}
+
+/*-----------------Footer--------------------------*/
+
+footer{
+   
+    width: 100%;
+    clear: both; /*Esto lo tuve que buscar porque no sabía como 
+                hacer que el pie no me pasase por encima de todo*/
+    /*Sirve para limpiar los float*/
+    min-height: 100px;
+}
+address{
+    text-align: center;
+    padding-top: 40px;
+    padding-bottom: 20px;
+}

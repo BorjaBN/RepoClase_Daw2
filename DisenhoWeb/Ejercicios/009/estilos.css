@@ -45,7 +45,7 @@ aside {
 }
 
 footer {
-    background: pink;
+    background-color: pink;
     width: 100%;
     clear: both; /*Esto lo tuve que buscar porque no sabía como 
                 hacer que el pie no me pasase por encima de todo*/
