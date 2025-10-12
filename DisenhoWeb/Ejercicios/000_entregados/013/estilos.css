@@ -1,0 +1,11 @@
+thead{
+    background-color: red;
+}
+
+tbody{
+    background-color: yellow;
+}
+
+tfoot{
+    background-color: blue;
+}

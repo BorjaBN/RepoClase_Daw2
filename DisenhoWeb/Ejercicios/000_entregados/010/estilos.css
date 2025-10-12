@@ -1,0 +1,52 @@
+*{
+  text-align:center;
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+body{
+  padding: 10px;
+  font-weight: bold;
+}
+
+/*---------------------------------------------------------*/
+
+header{
+  background-color: aqua;
+  min-height: 80px;
+  margin-bottom: 20px;
+}
+nav{
+ background-color: rgb(227, 255, 201);
+ margin: 20px;
+ height: 30px;
+}
+main{
+
+}
+article{
+  background-color: rgb(161, 225, 247);
+  height: 74dvh;
+  width: 500px;
+  margin-bottom: 10px;
+  float: left;
+}
+.section1, .section2, .section3 {
+  background-color: rgb(242, 165, 76);
+  height: 120px;
+  margin: 30px;
+}
+
+aside{
+  background-color: rgb(206, 154, 241);
+  height: 74dvh;
+  width: 200px;
+  margin-bottom: 10px;
+  float: right;
+}
+footer{
+  background-color: aqua;
+  clear: both; /*Esto lo tuve que buscar porque no sabía como 
+                hacer que el pie no me pasase por encima de todo*/
+  min-height: 50px; /*Sirve para limpiar los float*/
+}

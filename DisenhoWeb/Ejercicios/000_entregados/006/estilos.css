@@ -1,0 +1,33 @@
+* {
+    box-sizing: border-box; 
+    margin: 0;
+    padding: 0;
+    text-align: center;
+}
+
+/*-----------------------------------------------------------*/
+
+header {
+    background-color: aqua;
+    height: 60px;
+}
+
+.amarillito {
+    background-color: #f8e967;
+    float: left;
+    height: 82dvh;
+    width: 200px;
+}
+
+.verdecito {
+    background-color: #4bcd4f;
+    float: left;
+    height: 82dvh;
+    width: calc(100% - 200px);
+}
+
+footer {
+    background-color: #4682b4;
+    clear: both;
+    height: 60px;
+}
