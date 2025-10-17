@@ -1,1 +1,2 @@
-Vagrantfile
+# Ignorar archivos generados por Vagrant y claves privadas
+.vagrant/
