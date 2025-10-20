@@ -1,0 +1,44 @@
+div{
+    background-color: rgb(75, 72, 72);
+    color: white;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 25px;
+    border-radius: 4%;
+}
+
+.contenedorPrincipal{
+    width: 100dvw;
+    height: 100dvh;
+    display: grid;
+    grid-column-gap: 10px;
+    grid-row-gap: 10px;
+    grid-template-columns: repeat(5, 1fr);
+    grid-template-rows: repeat(4, 1fr);
+    grid-template-areas: 
+    "a a a a ."
+    "b b c c ."
+    "b b d e ."
+    ". . . . .";
+}
+
+.contenedor1{
+    grid-area: a;
+}
+
+.contenedor2{
+    grid-area: b;
+}
+
+.contenedor3{
+    grid-area: c;
+}
+
+.contenedor4{
+    grid-area: d;
+}
+
+.contenedor5{
+    grid-area: e;
+}

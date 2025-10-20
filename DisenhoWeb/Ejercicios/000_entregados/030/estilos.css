@@ -1,0 +1,64 @@
+
+div{
+    background-color: #666; 
+    color: white; 
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 2em;
+    
+}
+
+.contenedorPrincipal{
+    width: 100dvw;
+    height: 100dvh;
+    display: grid;
+    grid-column-gap: 10px;
+    grid-row-gap: 10px;
+    grid-template-columns: repeat(3, 1fr);
+    grid-template-rows: repeat(6, 1fr);
+    grid-template-areas: 
+    "a b c"
+    "a e c"
+    "a e f"
+    "d e i"
+    "g h i"
+    "g . i";
+}
+
+.contenedor1{
+    grid-area: a;
+}
+
+.contenedor2{
+    grid-area: b;
+}
+
+.contenedor3{
+    grid-area: c;
+}
+
+.contenedor4{
+    grid-area: d;
+}
+
+.contenedor5{
+    grid-area: e;
+}
+
+.contenedor6{
+    grid-area: f;
+}
+
+.contenedor7{
+    grid-area: g;
+}
+
+.contenedor8{
+    grid-area: h;
+}
+
+.contenedor9{
+    grid-area: i;
+}
+

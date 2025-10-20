@@ -1,0 +1,67 @@
+div{
+    background-color: rgb(75, 72, 72);
+    color: white;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 25px;
+    border-radius: 4%;
+}
+
+.contenedorPrincipal{
+     width: 100dvw;
+    height: 100dvh;
+    display: grid;
+    grid-column-gap: 10px;
+    grid-row-gap: 10px;
+    grid-template-columns: repeat(4, 1fr);
+    grid-template-rows: repeat(6, 1fr);
+    grid-template-areas: 
+    "a a b c"
+    "d e f ."
+    "g g h i"
+    "g g j ."
+    "k k k l"
+    "m . . .";
+}
+
+
+.contenedor1{
+    grid-area: a;
+}
+.contenedor2{
+    grid-area: b;
+}
+.contenedor3{
+    grid-area: c;
+}
+.contenedor4{
+    grid-area: d;
+}
+.contenedor5{
+    grid-area: e;
+}
+.contenedor6{
+    grid-area: f;
+}
+.contenedor7{
+    grid-area: g;
+}
+.contenedor8{
+    grid-area: h;
+}
+.contenedor9{
+    grid-area: i;
+}
+.contenedor10{
+    grid-area: j;
+}
+.contenedor11{
+    grid-area: k;
+}
+.contenedor12{
+    grid-area: l;
+}
+.contenedor13{
+    grid-area: m;
+}
