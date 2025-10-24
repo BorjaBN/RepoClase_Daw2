@@ -51,7 +51,7 @@ Vagrant.configure("2") do |config|
   # by making sure your Vagrantfile isn't accessible to the vagrant box.
   # If you use this you may want to enable additional shared subfolders as
   # shown above.
-  # config.vm.synced_folder ".", "/vagrant", disabled: true
+   config.vm.synced_folder ".", "/vagrant"
 
   # Provider-specific configuration so you can fine-tune various
   # backing providers for Vagrant. These expose provider-specific options.
@@ -59,8 +59,6 @@ Vagrant.configure("2") do |config|
   #
   # config.vm.provider "virtualbox" do |vb|
   #   # Display the VirtualBox GUI when booting the machine
-  #   vb.gui = true
-  #
   #   # Customize the amount of memory on the VM:
   #   vb.memory = "1024"
   # end
@@ -71,8 +69,46 @@ Vagrant.configure("2") do |config|
   # Enable provisioning with a shell script. Additional provisioners such as
   # Ansible, Chef, Docker, Puppet and Salt are also available. Please see the
   # documentation for more information about their specific syntax and use.
-  # config.vm.provision "shell", inline: <<-SHELL
+  config.vm.provision "shell", inline: <<-SHELL
   #   apt-get update
   #   apt-get install -y apache2
-  # SHELL
+
+  # Instalar Docker si no está
+    apt-get update && apt-get install -y curl
+
+    sudo -u vagrant docker --version
+    if [[ ! $? -eq 0 ]]; then
+        sudo -u vagrant curl -fsSL https://get.docker.com -o install-docker.sh
+        sh install-docker.sh
+
+        groupadd docker
+        usermod -aG docker vagrant
+    fi
+    sudo -u vagrant docker --version
+
+  # Crear red interna
+    docker network create red_interna || true
+
+  # Eliminar contenedores viejos si existen
+    docker rm -f php-apache phpmyadmin mariadb
+
+  # Levantar MariaDB
+    docker run -d --name mariadb --network red_interna \
+      -e MYSQL_ROOT_PASSWORD=rootpass123 \
+      -e MYSQL_DATABASE=appdb \
+      -e MYSQL_USER=pepe \
+      -e MYSQL_PASSWORD=despliegue \
+      mariadb
+
+    # Asegurar que los archivos de PHP tengan permisos correctos
+    chown -R 1000:1000 ./php
+    chmod -R 755 ./php
+
+  # Levantar PHP-Apache
+    docker run -d --name php-apache --network red_interna -p 80:80 -v ./php:/var/www/html php:8.4-apache
+
+  # Levantar phpMyAdmin
+    docker run -d --name phpmyadmin --network red_interna \
+      -e PMA_HOST=mariadb -p 8080:80 phpmyadmin
+  SHELL
 end
