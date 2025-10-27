@@ -9,7 +9,7 @@ div{
 }
 
 .contenedorPrincipal{
-     width: 100dvw;
+    width: 100dvw;
     height: 100dvh;
     display: grid;
     grid-column-gap: 10px;

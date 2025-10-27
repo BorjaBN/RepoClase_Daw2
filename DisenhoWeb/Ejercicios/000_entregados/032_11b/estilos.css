@@ -1,0 +1,32 @@
+
+@media (min-width: 600px){
+
+nav{
+    display: flex;
+    justify-content: space-evenly;
+    background-color: rgb(220, 80, 24);
+}
+
+p{
+    background-color: aliceblue;
+    border-radius: 10%;
+}
+
+}
+
+@media (max-width: 600px){
+
+nav{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+    align-items: center;
+    background-color: rgb(155, 198, 27);
+}
+
+p{
+    background-color: aliceblue;
+    border-radius: 10%;
+}
+
+}
