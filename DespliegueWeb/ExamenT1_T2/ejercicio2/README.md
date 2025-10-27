@@ -1,0 +1,1 @@
+lo unico que se debe de hacer es un docker compose up -d dentro de vagrant, vagrant up, accedemos a la carpeta /vagrant, ahora lanzamos el compose up, docker ps, ip a y sacamos la ip para acceder en el navegador.
