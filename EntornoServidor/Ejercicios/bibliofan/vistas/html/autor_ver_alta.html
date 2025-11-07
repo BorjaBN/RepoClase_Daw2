@@ -1,0 +1,45 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+  <title>Formulario de Alta de Autor</title>
+</head>
+<body>
+  <h1>Formulario</h1>
+
+  <form action="?controlador=ControladorAutor&metodo=alta" method="post" autocomplete="on">
+    <fieldset>
+      <legend>Datos personales</legend>
+
+      <div>
+        <label for="nombre">Nombre completo</label><br>
+        <input type="text" name="nombre" placeholder="Ej. María Pérez" required><br><br>
+      </div>
+
+      <div>
+        <label for="fecha_nacimiento">Fecha de nacimiento</label><br>
+        <input type="date"  name="fecha_nacimiento" required><br><br>
+      </div>
+
+      <div>
+        <label for="fecha_muerte">Fecha de muerte</label><br>
+        <input type="date"  name="fecha_muerte"><br><br>
+      </div>
+
+      <div>
+        <label for="nacionalidad">Nacionalidad</label><br>
+        <select name="nacionalidad" required>
+            <option value="">Española</option>
+            <option value="">Francesa</option>
+            <option value="">Jponesa</option>
+        </select><br><br>
+      </div>
+
+      <div>
+        <button type="submit">Enviar</button>
+        <button type="reset">Limpiar Formulario</button>
+      </div>
+    </fieldset>
+  </form>
+</body>
+</html>
