@@ -1,0 +1,50 @@
+@media(min-height:900px){
+    section{
+        height: 300px;
+        width: 300px;
+    }
+    .imagen1{
+        background-color: rgb(41, 93, 154);
+    }
+    .imagen2{
+
+    }
+    .imagen3{
+        background-color: yellow;
+    }
+    .imagen4{
+
+    }
+    .imagen5{
+        background-color: rgb(128, 128, 226);
+
+    }
+    .imagen6{
+
+    }
+}
+@media(max-height:899px){
+    section{
+        height: 300px;
+        width: 300px;
+    }
+    .imagen1{
+        background-color: rgb(41, 93, 154);
+    }
+    .imagen2{
+
+    }
+    .imagen3{
+        background-color: yellow;
+    }
+    .imagen4{
+
+    }
+    .imagen5{
+        background-color: rgb(128, 128, 226);
+
+    }
+    .imagen6{
+
+    }
+}
