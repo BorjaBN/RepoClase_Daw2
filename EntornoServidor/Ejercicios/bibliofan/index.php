@@ -34,8 +34,6 @@ try {
     $controlador = new $controlador($config);
     $controlador->$metodo();
 
-    echo "<br /> TRON: FIN </br />";
-
 } catch (Throwable $exception) {
 
     header('HTTP/2 500 Internal Server Error');

@@ -6,6 +6,14 @@
 </head>
 <body>
     <h1>Alta de Autor</h1>
+
+    <?php 
+    
+        if($mensaje){
+        echo "<p>$mensaje</p>";
+        }
+    ?>
+
     <form action="?controlador=ControladorAutor&metodo=alta" method="post">
         <fieldset>
             <legend>Datos de autor</legend>

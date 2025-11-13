@@ -6,7 +6,8 @@
             $this->config = $config;
         }
 
-        public function mostrar(){
+        public function mostrar($mensaje = null){
             require_once($this->config['dir_html'].'autor_ver_alta.html');
         }
+
     }

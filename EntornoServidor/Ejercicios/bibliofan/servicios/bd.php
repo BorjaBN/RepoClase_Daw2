@@ -36,4 +36,11 @@ class BD{
             return $this->conexion->lastInsertId();
 
     }
+
+    public function seleccionar($sql, $parametros = null){
+        $sentencia = $this->conexion->prepare($sql);
+        $sentencia->execute($parametros);
+        return $sentencia->fetchAll(PDO::FETCH_ASSOC);
+    }
+
 }
