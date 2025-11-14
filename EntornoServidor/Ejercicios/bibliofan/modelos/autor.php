@@ -30,7 +30,7 @@
             return $autores;
         }
 
-        public function __construct($nombre, $fecha_nacimiento, $fecha_muerte, $nacionalidad) {
+        public function __construct(string $nombre,  string $fecha_nacimiento, ?string  $fecha_muerte,string  $nacionalidad) {
             $this->id=null;
             $this->nombre = $nombre;
             $this->fecha_nacimiento = $fecha_nacimiento;
@@ -38,6 +38,14 @@
             $this->nacionalidad = $nacionalidad;
             $this->base_datos = new BD();
             
+        }
+
+        public function getId(): int{
+            return $this->id;
+        }
+
+        public function __toString(){
+            return $resultado =$this->id. '.'.$this->nombre.' ('.$this->nacionalidad.')';
         }
 
         public function guardar(){

@@ -38,7 +38,7 @@ try {
 
     header('HTTP/2 500 Internal Server Error');
     if ($config['debug']){
-        echo "Error en index.php:".$excepcion;
+        echo "Error en index.php:".$exception;
     }
 }
 

@@ -14,10 +14,12 @@
         }
     ?>
 
+    <p><a href="?controlador=ControladorAutor&metodo=verAlta">Añadir Autor</a></p>
+
     <?php
         
-        foreach($this-autores as $autor){
-            echo"$this->verDiv($autor)";
+        foreach($this->autores as $autor){
+            echo $this->verDiv($autor);
         }
 
     ?>
