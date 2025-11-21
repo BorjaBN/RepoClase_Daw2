@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <title>Login con Bootstrap</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="estilos.css">
+</head>
+<body>
+  <div class="cont-padre">
+    <div class="card p-4 shadow">
+
+      <h3>Iniciar sesión</h3>
+
+      <input type="email" class="form-control mb-2" placeholder="Usuario">
+      <input type="password" class="form-control mb-2" placeholder="Contraseña">
+
+      <button class="btn btn-entrar w-100 mb-2">Entrar</button>
+      <a href="#" class="enlace">¿Has olvidado tu contraseña?</a>
+      
+      <button class="btn btn-outline-primary w-100">Entrar con Google</button>
+    </div>
+  </div>
+
+  <script>
+    let contador = 0;
+    let imagenes = ["img/img1.jpg", "img/img2.jpg", "img/img3.jpg", "img/img4.jpg", "img/img5.jpg"];
+
+    function cambiafondo() {
+      document.body.style.backgroundImage = `url('${imagenes[contador]}')`;
+      contador = (contador + 1) % imagenes.length;
+    }
+
+    setInterval(cambiafondo, 5000);
+  </script>
+</body>
+
+</html>

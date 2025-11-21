@@ -1,0 +1,81 @@
+.body1 {
+  margin: 0;
+  background-size: cover;
+  background-position: center;
+  height: 100vh;
+  display: grid;
+  background-image: url('img/img2.jpg'); 
+}
+
+.contenedor_principal {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.contenedor_login {
+  background-color: rgba(255, 255, 255, 0.9);
+  padding: 30px;
+  border-radius: 10px;
+  display: grid;
+  gap: 15px;
+  width: 300px;
+}
+
+.contenedor_login h2 {
+  text-align: center;
+}
+
+.contenedor_login input {
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+}
+
+.contenedor_login button {
+  background-color: #e91e63;
+  color: white;
+  border: none;
+  padding: 10px;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.contenedor_login a {
+  text-align: center;
+  color: #0077cc;
+}
+
+.google_login {
+  background-color: rgb(86, 169, 197);
+  color: white;
+  text-align: center;
+  padding: 10px;
+  border-radius: 5px;
+  cursor: pointer;
+}
+/*----------------------------------------------------------------*/
+
+.body2 {
+  margin: 0;
+  background-size: cover;
+  background-position: center;
+  height: 100vh;
+  background-image: url('img/img1.jpg'); 
+  display: flex;
+  justify-content: space-between;
+  align-items: start;
+  
+}
+
+
+.arrepentido {
+  padding: 12px 24px;
+  background-color: rgb(245, 205, 10); 
+  color: white;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  font-size: larger;
+}
+
