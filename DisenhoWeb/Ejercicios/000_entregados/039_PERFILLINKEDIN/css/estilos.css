@@ -1,0 +1,30 @@
+.portada {
+  position: relative;
+  width: 100%;
+  min-height: 200px;   /* altura mínima para que no se encoja demasiado */
+  overflow: hidden;
+}
+
+.portada img {
+  width: 100%;
+  height: auto;
+  min-height: 200px;   /* asegura que la cabecera tenga un mínimo */
+  object-fit: cover;   /* recorta manteniendo proporciones */
+}
+
+.foto-perfil {
+  position: absolute;
+  top: 20px;
+  left: 20px;
+  z-index: 10;
+}
+
+.foto-perfil img {
+  width: 15vw;   /* escala según el ancho de la ventana */
+  max-width: 200px;
+  min-width: 200px;  /* nunca más pequeña que esto */
+  height: auto;
+  border: 5px solid white;
+  border-radius: 50%;
+  object-fit: cover;
+}

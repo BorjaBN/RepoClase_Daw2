@@ -1,0 +1,45 @@
+
+/* MEDIA QUERY: pantallas < 900px — versión re-hecha COMPLETA (todo en px) */
+@media (max-width: 900px) {
+  .grid {
+    grid-template-columns: repeat(3, 160px); /* 3 columnas de 160px */
+    grid-template-rows: repeat(4, 160px);    /* 4 filas de 160px */
+    gap: 12px;
+    width: max-content;
+    margin: 12px auto;
+  }
+
+  /* Nueva colocación móvil (basada en la imagen de referencia):
+     - imagen3: arriba-izq (ocupa columnas 1-2)
+     - imagen4: arriba-dcha, alto (columna 3 filas 1-2)
+     - imagen2: bloque central grande (columnas 1-2 filas 2-3) — debe quedar encima de todas
+     - imagen1: columna 3 filas 2-3 (derecha media) — debe quedar debajo de imagen4 y por encima de imagen5
+     - imagen6: abajo-izq (columna 1 fila 4)
+     - imagen5: abajo-centro/dcha (columnas 2-3 fila 4) */
+  .imagen3 { grid-column: 1 / span 2; grid-row: 1 / span 1; z-index: 200; }
+  .imagen4 { grid-column: 3 / span 1; grid-row: 1 / span 2; z-index: 900; } /* imagen4 encima de imagen1 */
+  .imagen2 { grid-column: 1 / span 2; grid-row: 2 / span 2; z-index: 1000; } /* imagen2 POR ENCIMA de todas */
+  .imagen1 { grid-column: 3 / span 1; grid-row: 2 / span 2; z-index: 800; }   /* imagen1 debajo de 4 y encima de 5 */
+  .imagen6 { grid-column: 1 / span 1; grid-row: 4 / span 1; z-index: 200; }
+  .imagen5 { grid-column: 2 / span 2; grid-row: 4 / span 1; z-index: 700; }    /* imagen5 por debajo de imagen1 */
+
+  /* Aseguro orden de apilamiento explícito solicitado:
+     - imagen2 por encima de todas
+     - imagen1 por debajo de imagen4 y por encima de imagen5 */
+  .imagen2 { z-index: 1000; }
+  .imagen4 { z-index: 900; }
+  .imagen1 { z-index: 800; }
+  .imagen5 { z-index: 700; }
+
+  /* Mantengo otros z-index bajos para evitar interferencias */
+  .imagen3 { z-index: 200; }
+  .imagen6 { z-index: 200; }
+}
+
+/* Regla para cuando pongas <img> dentro de las secciones */
+.grid section img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
