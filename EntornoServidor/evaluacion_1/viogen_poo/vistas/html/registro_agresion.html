@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Registro Agresion</title>
+    </head>
+<body>
+    <header>
+        <div>
+            <h1>Ingrese los datos de la agresión en los siguientes campos</h1>
+            
+            <form action="" method="post">
+                
+                <label for="id_victima">Victima: </label>
+                <input type="text" id="id_victima" class="id_victima" > *</input>
+                <br><br>
+                <p>Texto con la descripción o datos identificativos del agresor</p>
+                <label for="agresor">Agresor: </label>
+                <input type="text" id="agresor" class="agresor" ></input>
+                <br><br>
+
+                <label for="tipo_agresion">Tipo de agresión: </label>
+                <select id="tipo_documentacion" name="tipo_documentacion">
+                    <option value="Fisica">Física</option>
+                    <option value="Psicologica">Psicológica</option>
+                    <option value="Sexual">Sexual</option>
+                    <option value="Vicaria">Vicaria</option>
+                </select> *
+                <br><br>
+
+                <label for="fecha_hora">Fecha y hora: </label>
+                <input type="datetime" id="fecha_hora" class="fecha_hora" > *</input>
+                <br><br>
+
+            
+                <label for="observaciones">Observaciones: </label>
+                <input type="text" id="observaciones" class="observaciones" ></input>
+                <br><br>
+
+                <button type="submit">Registrar</button>
+            </form>
+        </div>
+    </header>
+</body>
+</html>

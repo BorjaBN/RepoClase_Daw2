@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Registro Victima</title>
+    </head>
+<body>
+    <header>
+        <div>
+            <h1>Ingrese los datos de la victima en los siguientes campos</h1>
+            <p>Debes de añadir minimo un nombre o una observación</p>
+            <form action="" method="post">
+                
+                <label for="nombre_">Nombre: </label>
+                <input type="text" id="nombre" class="nombre" > </input>
+                <br><br>
+
+                <label for="apellidos">Apellidos: </label>
+                <input type="text" id="apellidos" class="apellidos" ></input>
+                <br><br>
+
+                <label for="tipo_documentacion">Tipo de Documento de Identificación: </label>
+                <select id="tipo_documentacion" name="tipo_documentacion">
+                    <option value="">No Aportada</option>
+                    <option value="DNI">DNI</option>
+                    <option value="NIE">NIE</option>
+                    <option value="PASAPORTE">PASAPORTE</option>
+                </select>
+                <br><br>
+
+                <label for="identificacion">Documento de Identificación: </label>
+                <input type="text" id="identificacion" class="identificacion" ></input>
+                <br><br>
+
+                <label for="telefono">Teléfono: </label>
+                <input type="text" id="telefono" class="telefono" ></input>
+                <br><br>
+                
+                <label for="observaciones">Observaciones: </label>
+                <input type="text" id="observaciones" class="observaciones" ></input>
+                <br><br>
+
+                <button type="submit">Registrar</button>
+            </form>
+        </div>
+    </header>
+</body>
+</html>
