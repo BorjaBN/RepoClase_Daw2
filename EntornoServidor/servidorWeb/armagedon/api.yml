@@ -24,11 +24,52 @@ paths:
               schema:
                 type: array
                 items:
-                  type: object
-                  properties: 
-                    id: 
-                      type: integer
-                      description: Identificador de la entidad
-                    titulo:
-                      type: string
-                      description: Título de la entidad
+                  $ref: "#/components/schemas/Armagedon"
+    post:
+      summary: Inserta un nuevo recurso Armagedón.
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/Armagedon"
+      responses:
+        '201':
+          description: Recurso creado.
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  url: 
+                    type: string
+                    description: url del recurso creado
+                    example: {url: "armagedon/id=42"}
+        '400':
+          description: Parámetros inválidos
+        '500':
+          description: Error del servidor.
+        
+components:
+  schemas: 
+    Armagedon:
+      type: object
+      required:
+        - titulo 
+      properties: 
+        id: 
+          type: integer
+          description: Identificador de la entidad
+        bajas:
+          type: integer
+          minimum: 0
+          description: Número de bajas esperadas
+        titulo:
+          type: string
+          required:
+          description: Título de la entidad
+        
+        
+        
+        
+        
+        
