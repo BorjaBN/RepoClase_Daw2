@@ -1,0 +1,193 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link 
+        href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" 
+        rel="stylesheet" integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB" 
+        crossorigin="anonymous"
+    >
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.13.1/font/bootstrap-icons.min.css">
+    <link rel="stylesheet" href="estilos.css">
+    <title>Document</title>
+</head>
+<body>
+    <div class="contenedorPrincipal">
+        <nav class=" navbar bg-dark border-bottom border-body" data-bs-theme="dark">
+            <div class="container-fluid">
+                <a class="navbar-brand" href="#">Navbar</a>
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="collapse navbar-collapse" id="navbarNav">
+                    <ul class="navbar-nav">
+                        <li class="nav-item">
+                        <a class="nav-link active" aria-current="page" href="#">Inicio</a>
+                        </li>
+                        <li class="nav-item">
+                        <a class="nav-link" href="#">Caracteristicas</a>
+                        </li>
+                        <li class="nav-item">
+                        <a class="nav-link" href="#">Precios</a>
+                        </li>
+                        <li class="nav-item">
+                        <a class="nav-link disabled" aria-disabled="true">Contacto</a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </nav>
+        <div id="carouselExample" class="carousel slide">
+            <div class="carousel-inner">
+                <div class="carousel-item active">
+                <img src="img/img1.jpg" class="d-block w-100">
+                </div>
+                <div class="carousel-item">
+                <img src="img/img2.jpg" class="d-block w-100">
+                </div>
+                <div class="carousel-item">
+                <img src="img/img3.jpg" class="d-block w-100">
+                </div>
+            </div>
+            <button class="carousel-control-prev" type="button" data-bs-target="#carouselExample" data-bs-slide="prev">
+                <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                <span class="visually-hidden">Previous</span>
+            </button>
+            <button class="carousel-control-next" type="button" data-bs-target="#carouselExample" data-bs-slide="next">
+                <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                <span class="visually-hidden">Next</span>
+            </button>
+        </div>
+        <div class="row m-4">
+            <div class="col-sm-4 mb-3 mb-sm-0">
+                <div class="card text-center">
+                    <div class="icono">
+                        <i class="bi bi-lightbulb"></i>
+                    </div>
+                    <div class="card-body">
+                        <h5 class="card-title">Inovación</h5>
+                        <p class="card-text">Soluciones creativas a tus necesidades</p>
+                        <a href="#" class="btn btn-outline-primary">Más información</a>
+                    </div>
+                </div>
+            </div>
+            <div class="col-sm-4">
+                <div class="card text-center">
+                    <div class="icono">
+                        <i class="bi bi-shield-lock"></i>
+                    </div>
+                    <div class="card-body">
+                        <h5 class="card-title">Seguridad</h5>
+                        <p class="card-text">Protección total para tus datos y sistemas</p>
+                        <a href="#" class="btn btn-outline-primary">Más información</a>
+                    </div>
+                </div>
+            </div>
+            <div class="col-sm-4">
+                <div class="card text-center">
+                    <div class="icono">
+                        <i class="bi bi-bar-chart-line-fill"></i>
+                    </div>
+                    <div class="card-body">
+                        <h5 class="card-title">Crecimiento</h5>
+                        <p class="card-text">Estrtegias que impulsan el crecimiento de tu negocio</p>
+                        <a href="#" class="btn btn-outline-primary">Más información</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="row m-4">
+            <div class="col-sm-6">
+                <div class="card text-center">
+                    <div class="card-header">
+                        Básico
+                    </div>
+                    <div class="card-body">
+                        <h5 class="card-title">$9.99/mes</h5>
+                        <p class="card-text">Ideal para proyectos pequeños</p>
+                        <p class="card-text">5 proyectos</p>
+                        <p class="card-text">Soporte básico</p>
+                        <a href="#" class="btn btn-primary">Suscribirse</a>
+                    </div>
+                    
+                </div>
+            </div>
+            <div class="col-sm-6">
+                <div class="card text-center">
+                    <div class="card-header">
+                        Pro
+                    </div>
+                    <div class="card-body">
+                        <h5 class="card-title">$19.99/mes</h5>
+                        <p class="card-text">Para profesionales con mayores necesidades</p>
+                        <p class="card-text">20 proyectos</p>
+                        <p class="card-text">Soporte prioritario</p>
+                        <a href="#" class="btn btn-danger">Suscribirse</a>
+                    </div>
+                    
+                </div>
+            </div>
+            <div class="col-sm-6">
+                <div class="card text-center">
+                    <div class="card-header">
+                        Premium
+                    </div>
+                    <div class="card-body">
+                        <h5 class="card-title">$29.99/mes</h5>
+                        <p class="card-text">Para empresas grandes y proyectos</p>
+                        <p class="card-text">Proyectos ilimitados</p>
+                        <p class="card-text">Soporte 24/7</p>
+                        <a href="#" class="btn btn-success">Suscribirse</a>
+                    </div>
+                    
+                </div>
+            </div>
+        </div>
+
+        <form class="m-4">
+            <div class="titulo text-center">
+                <h3>Contáctanos</h3>
+            </div>
+            
+            <div class="mb-3">
+                <label for="nombre" class="form-label">Nombre</label>
+                <input type="text" class="form-control" id="nombre" aria-describedby="emailHelp">
+            </div>
+            <div class="mb-3">
+                <label for="correoElect" class="form-label">Correo Electrónico</label>
+                <input type="email" class="form-control" id="correoElect">
+            </div>
+            <div class="mb-3 ">
+                <label for="mensaje" class="form-label">Mensaje</label>
+                <textarea class="form-control" rows="2"></textarea>
+            </div>
+            <button type="submit" class="btn btn-primary">Enviar</button>
+        </form>
+
+    </div>
+    <div class="row" >
+        <footer class="row-3">
+            
+        </footer>
+        <footer class="footer text-center">
+            <div class="container">
+                <p>&copy; 2025 Fco. Borja De La Cruz Lucio</p>
+                <p>
+                    <i class="bi bi-facebook"></i>
+                    <i class="bi bi-twitter-x"></i>
+                    <i class="bi bi-instagram"></i>
+                </p>
+            </div>
+        </footer>
+    </div>
+
+    
+
+    <script 
+        src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js" 
+        integrity="sha384-FKyoEForCGlyvwx9Hj09JcYn3nv7wiPVlz7YYwJrWVcXK/BmnVDxM+D2scQbITxI" 
+        crossorigin="anonymous">
+    </script>
+</body>
+</html>
