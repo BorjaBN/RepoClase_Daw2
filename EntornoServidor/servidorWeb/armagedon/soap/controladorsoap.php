@@ -17,7 +17,8 @@ class controladorSOAP {
 
 
     function insertar($peticion){
-
+        // Comprobamos el token
+        
         $armagedon = $peticion->armagedon;
 
        //Comprobamos los parámetros

@@ -21,7 +21,8 @@ $opciones = [
     CURLOPT_FOLLOWLOCATION => true,
     CURLOPT_HTTPHEADER => [
         'Content-Type: application/json',
-        'Accept: application/json'
+        'Accept: application/json',
+        'Authorization: qwerty'
         
     ],
     CURLOPT_POSTFIELDS => $armagedon,

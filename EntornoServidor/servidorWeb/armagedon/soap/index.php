@@ -10,6 +10,14 @@ $opciones = [
     'exceptions' => 1
 ];
 
+$peticion = file_get_contents('php://input');
+if(!str_contains($peticion, "<token>qwerty</toekn>")){
+    header(401);
+    echo "No autorizado";
+}
 $servidor = new SoapServer('../api.wsdl', $opciones);
+
+print_r($cabeceras);
+die();
 $servidor->setClass('ControladorSOAP');
 $servidor->handle();

@@ -122,6 +122,23 @@ function listar(){
 //-------------------------------TODO ESTO ES EL POST----------------------------------------------------------
 
 function insertar(){
+    //Comprobar el token
+    $cabeceras = getallheaders();
+    if(!array_key_exists('Authorization', $cabeceras)){
+        http_response_code(401);
+        echo 'No autorizado';
+        die();
+    }
+
+    $token = $cabeceras['Authorization'];
+    //Comprobar con el controlador de login
+    if($token != 'qwerty'){
+        http_response_code(401);
+        echo 'No autorizado';
+        die();
+    }
+
+
     $datos = json_decode(file_get_contents('php://input'), true);
 
     // Comprobar los parámetros

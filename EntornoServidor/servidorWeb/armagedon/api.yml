@@ -26,7 +26,9 @@ paths:
                 items:
                   $ref: "#/components/schemas/Armagedon"
     post:
-      summary: Inserta un nuevo recurso Armagedón.        
+      summary: Inserta un nuevo recurso Armagedón.
+      security:
+        - bearerAuth: []        
       requestBody:
         content:
           application/json:
@@ -123,6 +125,15 @@ components:
         titulo:
           type: string
           description: Título de la entidad
+  securitySchemas:
+    bearerAuth:
+      type: http
+      scheme: bearer 
+      bearerFormat: JWT
+    apiKeyAuth:
+      type: apiKey
+      in: header
+      name: X-API-Key
         
         
         
