@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<wsdl:definitions 
+    xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/"
+    xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/"
+    xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+    xmlns:tns="http://localhost/bmws"
+    targetNamespace="http://localhost/bmws">
+
+    <!-- Tipos de datos (Esquema XML) -->
+    <wsdl:types>
+        <xsd:schema targetNamespace="http://localhost/bmws">
+
+
+    <!--Elementos para listar-->
+        <xsd:element name="peticionListar">
+            <xsd:complexType />
+        </xsd:element>
+        <xsd:element name="respuestaListar">
+            <xsd:complexType>
+                <xsd:sequence>
+                    <xsd:element name="mensaje" type="tns:elementoMensaje" maxOccurs="unbounded" />
+                </xsd:sequence>
+            </xsd:complexType>
+        </xsd:element>
+
+    <!--Elementos comunes a varias operaciones-->    
+        <xsd:complexType name="elementoMensaje">
+            <xsd:sequence>
+                <xsd:element name="titulo" type="xsd:string" />
+                <xsd:element name="cuerpo" type="xsd:string" />
+                <xsd:element name="fecha" type="xsd:dateTime" />
+            </xsd:sequence>
+        </xsd:complexType>
+
+        </xsd:schema>
+    </wsdl:types>
+
+    <!-- Mensajes para listar mensajes -->
+    <wsdl:message name="peticionListar">
+        <wsdl:part name="parameters" element="tns:peticionListar" />
+    </wsdl:message>
+    <wsdl:message name="respuestaListar">
+        <wsdl:part name="parameters" element="tns:respuestaListar" />
+    </wsdl:message>
+
+    <!-- Puerto/PortType -->
+    <wsdl:portType name="Puerto">
+        <wsdl:operation name="listar">
+            <wsdl:input message="tns:peticionListar" />
+            <wsdl:output message="tns:respuestaListar" />
+        </wsdl:operation>
+    </wsdl:portType>
+
+    <!-- Formato/Binding -->
+    <wsdl:binding name="FormatoSoap" type="tns:Puerto">
+        <soap:binding style="document" transport="http://schemas.xmlsoap.org/soap/http" />
+       <wsdl:operation name="listar">
+            <soap:operation soapAction="http://localhost/bmws/api/soap/listar" />
+            <wsdl:input>
+                <soap:body use="literal"/>
+            </wsdl:input>
+            <wsdl:output>
+                <soap:body use="literal"/>
+            </wsdl:output>
+        </wsdl:operation>       
+    </wsdl:binding>
+
+    <!-- Servicio -->
+    <wsdl:service name="ServicioBlackMailBox">
+        <wsdl:port name="Puerto" binding="tns:FormatoSoap">
+            <soap:address location="http://localhost/bmws/api/soap"/>
+        </wsdl:port>
+    </wsdl:service>
+</wsdl:definitions>

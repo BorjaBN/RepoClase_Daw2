@@ -39,5 +39,5 @@ components:
           vidas:
             type: integer
             minimum: 1
-            description: Número de vdias del bicho
+            description: Número de vidas del pokemon
           

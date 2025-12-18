@@ -1,0 +1,72 @@
+openapi: 3.0.4
+info:
+  title: API de Black Mailbox Web Service 
+  version: 1.0.0
+  contact: 
+    name: Desarrollos Apocalípticos, S.A.
+    email: programadores_daw@iescastelar.com
+    
+servers:
+  - url: https://localhost/bmws/api/rest/
+    description: Servidor para el examen... no hay más
+    
+paths:
+  /mensaje/:
+    post:
+      summary: Inserta un nuevo recurso de mensajes.
+      security:
+        - bearerAuth: []        
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/MensajeInsertar"
+      responses:
+        '201':
+          description: Mensaje creado.
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  url: 
+                    type: string
+                    description: url del recurso creado
+                    example: "http://localhost/bmws/api/rest/mensajes/42"
+        '400':
+          description: Parámetros inválidos
+          content:
+            text/html:
+              schema:
+                type: string
+                example: "Falta el parámetro cuerpo."
+        '500':
+          description: Error del servidor.
+components:
+  schemas:
+    MensajeInsertar:
+      type: object
+      required:
+        - titulo
+        - cuerpo
+      properties:
+        titulo:
+          type: string
+          description: Título del mensaje
+        cuerpo:
+          type: string
+          description: Cuerpo del mensaje
+
+    Mensaje:
+      type: object
+      properties:
+        id:
+          type: integer
+        titulo:
+          type: string
+        cuerpo:
+          type: string
+        fecha:
+          type: string
+          format: date-time

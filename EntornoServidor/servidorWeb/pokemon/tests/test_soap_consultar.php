@@ -2,7 +2,7 @@
 
 error_reporting(E_ALL);
 ini_set('display_errors', 1);
-echo "Probando servicio SOAP. Insertar:";
+echo "Probando servicio SOAP. Consultar:";
 
 $opciones = [
     'uri' => 'http://localhost/servidorWeb/pokemon/api/soap',
@@ -15,15 +15,13 @@ $opciones = [
 ];
 
 $cliente = new SoapClient('http://localhost/servidorWeb/pokemon/api/soap.wsdl', $opciones);
+
 $datos = [
-    'pokemon' => [
-        'nombre' => 'eevee',
-        'vidas' => 154
-    ]
+    'id' => 6   
 ];
 
-$resultados = $cliente->insertar($datos);
+$resultados = $cliente->consultar($datos);
 
-echo"<pre>";
+echo "<pre>";
 print_r($resultados);
-echo"</pre>";
+echo "</pre>";

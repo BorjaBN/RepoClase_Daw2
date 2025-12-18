@@ -15,7 +15,7 @@
 			$this->conexion->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 		}
 
-		public function listar(string $tabla, array $campos){
+		public function listar(string $tabla, array $campos): array{
 			$columnas = join(', ', $campos);
 			$sql = "SELECT $columnas FROM $tabla";
 			$sentencia = $this->conexion->prepare($sql);
@@ -40,7 +40,7 @@
 			return $this->conexion->lastInsertId();
 		}
 
-		public function consultar(string $tabla, array $campos, int $id){
+		public function consultar(string $tabla, array $campos, int $id): array{
 			$columnas = join(', ', $campos);
 			$sql = "SELECT $columnas FROM $tabla WHERE id = :id";
 			$sentencia = $this->conexion->prepare($sql);
@@ -50,16 +50,12 @@
 			return $resultado;
 		}
 
-		public function eliminar(string $tabla, int $id){
+		public function eliminar(string $tabla, int $id): bool{
 			$sql = "DELETE FROM $tabla WHERE id = :id";
 			$sentencia = $this->conexion->prepare($sql);
 			$sentencia->bindParam(':id', $id);
-			$sentencia->execute();
-			//$resultado = $sentencia->fetchAll(PDO::FETCH_ASSOC);
-			return $sentencia->rowCount() > 0;
+			return $sentencia->execute();
 		}
-		
-
 
 		public function actualizar(string $tabla, array $campos, int $id){
 			$camposSet = [];
@@ -70,10 +66,8 @@
 
 			$sentencia = $this->conexion->prepare($sql);
 
-			$sentencia->bindParam(':id', $id);
-			foreach($campos as $clave => $valor)
-				$sentencia->bindParam(":$clave", $valor);
+			$params = array_merge(['id' => $id], $campos);
 
-			return $sentencia->execute();
+			return $sentencia->execute($params);
 		}
 	}
