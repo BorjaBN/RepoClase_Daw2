@@ -11,6 +11,18 @@
     <wsdl:types>
         <xsd:schema targetNamespace="http://localhost/servidorWeb/pokemon">
 
+        <!--Elementos para listar-->
+            <xsd:element name="peticionListar">
+                <xsd:complexType />
+            </xsd:element>
+            <xsd:element name="respuestaListar">
+                <xsd:complexType>
+                    <xsd:sequence>
+                        <xsd:element name="pokemon" type="tns:elementoPokemon" maxOccurs="unbounded" />
+                    </xsd:sequence>
+                </xsd:complexType>
+            </xsd:element>
+
         <!--Elementos para insertar-->
             <xsd:element name="peticionInsertar">
                 <xsd:complexType>
@@ -27,7 +39,42 @@
                 </xsd:complexType>
             </xsd:element>
 
-            <!-- Token de autorización-->
+        <!--Elementos para consultar-->
+            <xsd:element name="peticionConsultar">
+                <xsd:complexType>
+                    <xsd:sequence>
+                        <xsd:element name="id" type="xsd:integer" />
+                    </xsd:sequence>
+                </xsd:complexType>
+            </xsd:element>
+            <xsd:element name="respuestaConsultar">
+                <xsd:complexType>
+                    <xsd:sequence>
+                        <xsd:element name="pokemon" type="tns:elementoPokemon" minOccurs="0" />
+                    </xsd:sequence>
+                </xsd:complexType>
+            </xsd:element>
+
+        <!--Elementos para eliminar-->
+        <xsd:element name="peticionEliminar">
+            <xsd:complexType>
+                <xsd:sequence>
+                    <xsd:element name="id" type="xsd:int"/>
+                </xsd:sequence>
+            </xsd:complexType>
+        </xsd:element>
+
+        <xsd:element name="respuestaEliminar">
+            <xsd:complexType>
+                <xsd:sequence>
+                    <xsd:element name="resultado" type="xsd:boolean"/>
+                </xsd:sequence>
+            </xsd:complexType>
+        </xsd:element>
+
+
+
+        <!-- Token de autorización-->
             <xsd:element name="tokenAutorizacion">
                 <xsd:complexType>
                     <xsd:sequence>
@@ -51,6 +98,13 @@
     <wsdl:message name="tokenAutorizacion">
         <wsdl:part name="parameters" element="tns:tokenAutorizacion" />
     </wsdl:message>
+
+    <wsdl:message name="peticionListar">
+        <wsdl:part name="parameters" element="tns:peticionListar" />
+    </wsdl:message>
+    <wsdl:message name="respuestaListar">
+        <wsdl:part name="parameters" element="tns:respuestaListar" />
+    </wsdl:message>
     
     <wsdl:message name="peticionInsertar">
         <wsdl:part name="parameters" element="tns:peticionInsertar" />
@@ -59,23 +113,81 @@
         <wsdl:part name="parameters" element="tns:respuestaInsertar" />
     </wsdl:message>
 
+    <wsdl:message name="peticionConsultar">
+        <wsdl:part name="parameters" element="tns:peticionConsultar" />
+    </wsdl:message>
+    <wsdl:message name="respuestaConsultar">
+        <wsdl:part name="parameters" element="tns:respuestaConsultar" />
+    </wsdl:message>
+
+    <wsdl:message name="peticionEliminar">
+        <wsdl:part name="parameters" element="tns:peticionEliminar" />
+    </wsdl:message>
+    <wsdl:message name="respuestaEliminar">
+        <wsdl:part name="parameters" element="tns:respuestaEliminar" />
+    </wsdl:message>
+    
+
     <!-- Puerto/PortType -->
     <wsdl:portType name="Puerto">
-        
+        <wsdl:operation name="listar">
+            <wsdl:input message="tns:peticionListar" />
+            <wsdl:output message="tns:respuestaListar" />
+        </wsdl:operation>
+
         <wsdl:operation name="insertar">
             <wsdl:input message="tns:peticionInsertar" />
             <wsdl:output message="tns:respuestaInsertar" />
+        </wsdl:operation>
+
+        <wsdl:operation name="consultar">
+            <wsdl:input message="tns:peticionConsultar" />
+            <wsdl:output message="tns:respuestaConsultar" />
+        </wsdl:operation>
+
+        <wsdl:operation name="eliminar">
+            <wsdl:input message="tns:peticionEliminar" />
+            <wsdl:output message="tns:respuestaEliminar" />
         </wsdl:operation>
     </wsdl:portType>
 
     <!-- Formato/Binding -->
     <wsdl:binding name="FormatoSoap" type="tns:Puerto">
         <soap:binding style="document" transport="http://schemas.xmlsoap.org/soap/http" />
-       
+       <wsdl:operation name="listar">
+            <soap:operation soapAction="http://localhost/servidorWeb/pokemon/api/soap/listar" />
+            <wsdl:input>
+                <soap:body use="literal"/>
+            </wsdl:input>
+            <wsdl:output>
+                <soap:body use="literal"/>
+            </wsdl:output>
+        </wsdl:operation>
+
         <wsdl:operation name="insertar">
             <soap:operation soapAction="http://localhost/servidorWeb/pokemon/api/soap/insertar" />
             <wsdl:input>
                 <soap:header message="tns:tokenAutorizacion" part="parameters" use="literal" />
+                <soap:body use="literal"/>
+            </wsdl:input>
+            <wsdl:output>
+                <soap:body use="literal"/>
+            </wsdl:output>
+        </wsdl:operation>
+
+        <wsdl:operation name="consultar">
+            <soap:operation soapAction="http://localhost/servidorWeb/pokemon/api/soap/consultar" />
+            <wsdl:input>
+                <soap:body use="literal"/>
+            </wsdl:input>
+            <wsdl:output>
+                <soap:body use="literal"/>
+            </wsdl:output>
+        </wsdl:operation>
+
+        <wsdl:operation name="eliminar">
+            <soap:operation soapAction="http://localhost/servidorWeb/pokemon/api/soap/eliminar" />
+            <wsdl:input>
                 <soap:body use="literal"/>
             </wsdl:input>
             <wsdl:output>

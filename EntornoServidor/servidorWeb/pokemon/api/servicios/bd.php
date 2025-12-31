@@ -55,9 +55,11 @@
 			$sentencia = $this->conexion->prepare($sql);
 			$sentencia->bindParam(':id', $id);
 			$sentencia->execute();
-			$resultado = $sentencia->fetchAll(PDO::FETCH_ASSOC);
-			return $resultado;
+			//$resultado = $sentencia->fetchAll(PDO::FETCH_ASSOC);
+			return $sentencia->rowCount() > 0;
 		}
+		
+
 
 		public function actualizar(string $tabla, array $campos, int $id){
 			$camposSet = [];
