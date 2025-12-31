@@ -1,0 +1,43 @@
+openapi: 3.0.4
+info:
+  title: API de Pokemon - IES Castelar
+  version: 1.0.0
+  contact: 
+    name: Desarrollos Apocalípticos, S.A.
+    email: programadores_daw@iescastelar.com
+    
+servers:
+  - url: https://localhost/servidorWeb/pokemon/api/rest/
+    description: Servidor para el examen... no hay más
+    
+paths:
+  /pokemon/:
+    get:
+      summary: Obtener la lista completa de Pokemons.
+      responses:
+        '200':
+          description: Lista obtenida correctamente.
+          content: 
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: "#/components/schemas/Pokemon"
+        '500':
+          description: Error del servidor.
+components:
+  schemas:
+    Pokemon:
+        type: object
+        properties: 
+          id: 
+            type: integer
+            description: Identificador de la entidad
+          nombre:
+            type: string
+            description: Nombre del pokemon
+          vidas:
+            type: integer
+            minimum: 1
+            description: Número de vdias del bicho
+          

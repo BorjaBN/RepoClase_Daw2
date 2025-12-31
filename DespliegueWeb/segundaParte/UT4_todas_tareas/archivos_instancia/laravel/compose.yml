@@ -1,0 +1,19 @@
+version: "3.9"
+
+services:
+  laravel:
+    image: shinsenter/laravel:latest
+    container_name: laravel-app
+    volumes:
+      - ./proyectoLaravel:/var/www/html
+    networks:
+      - caddy
+    labels:
+      caddy: laravel.borjabn-clase.duckdns.org
+      caddy.reverse_proxy: "{{upstreams 80}}"
+    restart: unless-stopped
+    # Acordarse que esto está imparable, hay que tirarlo manualmente para pararlo
+networks:
+  caddy:
+    external: true
+

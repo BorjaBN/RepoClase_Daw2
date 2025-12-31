@@ -1,0 +1,108 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<wsdl:definitions
+    xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/"
+    xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/"
+    xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+    xmlns:tns="http://www.telearmagedon.com/armagedon"
+    targetNamespace="http://www.telearmagedon.com/armagedon"
+    >
+
+    <!-- Tipos de datos (Esquemas de XML) -->
+    <wsdl:types>
+        <xsd:schema targetNamespace="http://www.telearmagedon.com/armagedon">
+        <!--Elementos para listar-->
+            <xsd:element name="peticionListar">
+                <xsd:complexType />
+            </xsd:element>
+            <xsd:element name="respuestaListar">
+                <xsd:complexType>
+                    <xsd:sequence>
+                        <xsd:element name="armagedon" type="tns:elementoArmagedon" maxOccurs="unbounded" />
+                    </xsd:sequence>
+                </xsd:complexType>
+            </xsd:element>
+
+        <!--Elementos para insertar-->
+            <xsd:element name="peticionInsertar">
+                <xsd:complexType>
+                    <xsd:sequence>
+                        <xsd:element name="armagedon" type="tns:elementoArmagedon" maxOccurs="1" />
+                    </xsd:sequence>
+                </xsd:complexType>
+            </xsd:element>
+            <xsd:element name="respuestaInsertar">
+                <xsd:complexType>
+                    <xsd:sequence>
+                        <xsd:element name="url" type="xsd:string" maxOccurs="1"/>
+                    </xsd:sequence>
+                </xsd:complexType>
+            </xsd:element>
+
+        <!--Elementos comunes a varias operaciones-->    
+            <xsd:complexType name="elementoArmagedon">
+                <xsd:sequence>
+                    <xsd:element name="id" type="xsd:integer" minOccurs="0" />
+                    <xsd:element name="bajas" type="xsd:integer" />
+                    <xsd:element name="titulo" type="xsd:string" />
+                </xsd:sequence>
+            </xsd:complexType>
+
+        </xsd:schema>
+    </wsdl:types>
+
+    <!-- Mensajes -->
+    <wsdl:message name="peticionListar">
+        <wsdl:part name="parameters" element="tns:peticionListar" />
+    </wsdl:message>
+    <wsdl:message name="respuestaListar">
+        <wsdl:part name="parameters" element="tns:respuestaListar" />
+    </wsdl:message>
+    <wsdl:message name="peticionInsertar">
+        <wsdl:part name="parameters" element="tns:peticionInsertar" />
+    </wsdl:message>
+    <wsdl:message name="respuestaInsertar">
+        <wsdl:part name="parameters" element="tns:respuestaInsertar" />
+    </wsdl:message>
+
+    <!-- Puerto/PortType -->
+    <wsdl:portType name="Puerto">
+        <wsdl:operation name="listar">
+            <wsdl:input message="tns:peticionListar" />
+            <wsdl:output message="tns:respuestaListar" />
+        </wsdl:operation>
+        <wsdl:operation name="insertar">
+            <wsdl:input message="tns:peticionInsertar" />
+            <wsdl:output message="tns:respuestaInsertar" />
+        </wsdl:operation>
+    </wsdl:portType>
+
+    <!-- Formato/Binding -->
+    <wsdl:binding name="FormatoSoap" type="tns:Puerto">
+        <soap:binding style="document" transport="http://schemas.xmlsoap.org/soap/http" />
+        <wsdl:operation name="listar">
+            <soap:operation soapAction="http://localhost/servidorWeb/armagedon/soap/listar" />
+            <wsdl:input>
+                <soap:body use="literal"/>
+            </wsdl:input>
+            <wsdl:output>
+                <soap:body use="literal"/>
+            </wsdl:output>
+        </wsdl:operation>
+        <wsdl:operation name="insertar">
+            <soap:operation soapAction="http://localhost/servidorWeb/armagedon/soap/insertar" />
+            <wsdl:input>
+                <soap:body use="literal"/>
+            </wsdl:input>
+            <wsdl:output>
+                <soap:body use="literal"/>
+            </wsdl:output>
+        </wsdl:operation>
+    </wsdl:binding>
+
+    <!-- Servicio -->
+    <wsdl:service name="ServicioArmagedon">
+        <wsdl:port name="Puerto" binding="tns:FormatoSoap">
+            <soap:address location="http://localhost/servidorWeb/armagedon/soap" />
+        </wsdl:port>
+    </wsdl:service>
+</wsdl:definitions>

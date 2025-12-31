@@ -26,7 +26,7 @@ paths:
                 items:
                   $ref: "#/components/schemas/Armagedon"
     post:
-      summary: Inserta un nuevo recurso Armagedón.
+      summary: Inserta un nuevo recurso Armagedón.        
       requestBody:
         content:
           application/json:
@@ -46,15 +46,72 @@ paths:
                     example: {url: "armagedon/id=42"}
         '400':
           description: Parámetros inválidos
+          content:
+            text/html:
+              schema:
+                type: string
+                example: "Falta el parámetro id."
+        '500':
+          description: Error del servidor.
+    put:
+      summary: ctualiza todos los datos de un recurso Armagedon
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/Armagedon"
+      responses:
+        '200':
+          description: Recurso ctualizado.
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  url: 
+                    type: string
+                    description: url del recurso creado
+                    example: " http://localhost/servidorWeb/armagedon/"
+        '400':
+          description: Parámetros inválidos
+          content:
+            text/html:
+              schema:
+                type: string
+                example: "Falta el parámetro titulo"
         '500':
           description: Error del servidor.
         
+    delete:
+      summary: Eliminar el recurso indicado
+      parameters:
+          - name: id
+            in: query
+            required: true
+            schema:
+                type: integer
+      responses:
+        '204':
+          description: Borrado correcto
+        '400':
+          description: Parámetros inválidos
+          content:
+            text/html:
+              schema:
+                type: string
+                example: "alta el parámetro id."
+        '404':
+          description: Recurso no encontrado
+          content:
+            text/html:
+              schema:
+                type: string
+                example: "No existe un armagedón con ese id."      
+
 components:
   schemas: 
     Armagedon:
       type: object
-      required:
-        - titulo 
       properties: 
         id: 
           type: integer
@@ -65,7 +122,6 @@ components:
           description: Número de bajas esperadas
         titulo:
           type: string
-          required:
           description: Título de la entidad
         
         
