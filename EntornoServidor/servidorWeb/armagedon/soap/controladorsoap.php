@@ -17,8 +17,12 @@ class controladorSOAP {
 
 
     function insertar($peticion){
+<<<<<<< HEAD
         // Comprobamos el token
         
+=======
+
+>>>>>>> 9c47d731bbfb4c319c2910a47420cb6dfd166fbc
         $armagedon = $peticion->armagedon;
 
        //Comprobamos los parámetros

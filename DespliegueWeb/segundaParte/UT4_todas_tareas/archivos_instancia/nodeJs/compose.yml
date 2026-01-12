@@ -1,0 +1,16 @@
+version: "3.9"
+
+services:
+  nodeapp:
+    build: .
+    container_name: node-app
+    networks:
+      - caddy
+    labels:
+      caddy: node.borjabn-clase.duckdns.org
+      caddy.reverse_proxy: "{{upstreams 3000}}"
+    restart: unless-stopped
+
+networks:
+  caddy:
+    external: true

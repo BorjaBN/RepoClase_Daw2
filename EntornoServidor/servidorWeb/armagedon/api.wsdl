@@ -38,6 +38,7 @@
                 </xsd:complexType>
             </xsd:element>
 
+<<<<<<< HEAD
             <!-- Token de autorización-->
             <xsd:element name="tokenAutorizacion">
                 <xsd:complexType>
@@ -47,6 +48,8 @@
                 </xsd:complexType>
             </xsd:element>
 
+=======
+>>>>>>> 9c47d731bbfb4c319c2910a47420cb6dfd166fbc
         <!--Elementos comunes a varias operaciones-->    
             <xsd:complexType name="elementoArmagedon">
                 <xsd:sequence>
@@ -60,9 +63,12 @@
     </wsdl:types>
 
     <!-- Mensajes -->
+<<<<<<< HEAD
     <wsdl:message name="tokenAutorizacion">
         <wsdl:part name="parameters" element="tns:tokenAutorizacion" />
     </wsdl:message>
+=======
+>>>>>>> 9c47d731bbfb4c319c2910a47420cb6dfd166fbc
     <wsdl:message name="peticionListar">
         <wsdl:part name="parameters" element="tns:peticionListar" />
     </wsdl:message>
@@ -103,7 +109,10 @@
         <wsdl:operation name="insertar">
             <soap:operation soapAction="http://localhost/servidorWeb/armagedon/soap/insertar" />
             <wsdl:input>
+<<<<<<< HEAD
                 <soap:header message="tns:tokenAutorizacion" part="parameters" use="literal" />
+=======
+>>>>>>> 9c47d731bbfb4c319c2910a47420cb6dfd166fbc
                 <soap:body use="literal"/>
             </wsdl:input>
             <wsdl:output>

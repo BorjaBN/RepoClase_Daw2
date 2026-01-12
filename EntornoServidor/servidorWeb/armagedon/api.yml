@@ -26,9 +26,13 @@ paths:
                 items:
                   $ref: "#/components/schemas/Armagedon"
     post:
+<<<<<<< HEAD
       summary: Inserta un nuevo recurso Armagedón.
       security:
         - bearerAuth: []        
+=======
+      summary: Inserta un nuevo recurso Armagedón.        
+>>>>>>> 9c47d731bbfb4c319c2910a47420cb6dfd166fbc
       requestBody:
         content:
           application/json:

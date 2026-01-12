@@ -1,0 +1,28 @@
+services:
+  tomcat:
+    image: tomcat:10
+    container_name: tomcat
+# Para probar vía proxy socks (filtrado en el firewall de AWS)
+    ports:
+      - 8888:8080
+    volumes:
+# Dir de despliegue de aplicaciones.
+#   Poner aquí los war y los auto-despliega (descomprime)
+      - ./aplicaciones:/usr/local/tomcat/webapps
+
+# CORS global (para una app concreta insertar el filtro en el web.xml del direorio META-INF)
+      # -/web.xml:/usr/local/tomcat/conf/web.xml
+
+# La red "red_interna" es para conectar con una bbdd sin exponerla a la red "global" del proxy inverso "red_de_proxy"
+    networks:
+      - caddy #red_de_proxy
+      - interna #red_interna
+    labels:
+      caddy: tomcat.borjabn-clase.duckdns.org
+      caddy.reverse_proxy: "{{upstreams 8080}}"
+
+networks:
+   caddy:
+      external: 'true'
+   interna:
+      external: 'true'

@@ -10,6 +10,7 @@ $opciones = [
     'exceptions' => 1
 ];
 
+<<<<<<< HEAD
 $peticion = file_get_contents('php://input');
 if(!str_contains($peticion, "<token>qwerty</toekn>")){
     header(401);
@@ -19,5 +20,8 @@ $servidor = new SoapServer('../api.wsdl', $opciones);
 
 print_r($cabeceras);
 die();
+=======
+$servidor = new SoapServer('../api.wsdl', $opciones);
+>>>>>>> 9c47d731bbfb4c319c2910a47420cb6dfd166fbc
 $servidor->setClass('ControladorSOAP');
 $servidor->handle();
