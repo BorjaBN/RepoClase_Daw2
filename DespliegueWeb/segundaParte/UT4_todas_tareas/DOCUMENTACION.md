@@ -46,7 +46,7 @@ services:
       - caddy #red_de_proxy  
       - interna #red_interna  
     labels:  
-      caddy: tomcat.borjabn-clase.duckdns.org  
+      caddy: tomcat.borjabn-clase.duckdns.org,	tomcat.borjabn-clase.mooo.com	 
       caddy.reverse_proxy: "{{upstreams 8080}}"  
 
 networks:  
@@ -496,3 +496,32 @@ networks:
 *Anotación personal: caddy tenía probelmas con los labels de flask al dejar "***caddy.reverse_proxy: "{{upstreams 5000}}"***", por lo que se hizo el cambio con el nombre del contenedor para que funcione.*
 
 ![Resultado práctica 4](img/img6.png)
+
+---
+
+## ACUTALIZACIÓN - ADICIÓN DE FREEDNS
+
+Se ha añadido un nuevo dominio con freedns para no depender unicamente de duckdns, por problemas técnicos con frecuencia.
+
+Tras crear el subdominio se accede a la opción "***Dynamic DNS***", se entra en "***Direct URL***" y se copia la url. Con esta url se debe de añadir a contrab de la instancia, mediante "**contrab -e**" se escribe en el archivo lo siguiente:
+
+<pre>
+*/10 * * * * /usr/bin/curl -s https://url-copiada.com
+</pre>
+
+Una vez hecho esto, se guarda y se sale de la instancia para reiniciarla.
+
+<pre>
+
+https://tomcat.borjabn-clase.mooo.com/hello-servlet
+
+https://flask.borjabn-clase.mooo.com/
+
+https://laravel.borjabn-clase.mooo.com/index.php/hola-controller
+
+https://node.borjabn-clase.mooo.com/
+
+</pre>
+
+*Anotación personal: Recordar que cuadno se haga un subdominio nuevo es posible que no funcione, en este caso habrá que copiar la url de nuevo. 
+Es posible que funcione de primeras, es una lotería.*
