@@ -1,0 +1,19 @@
+#!/bin/bash
+
+GIT_DIR=/home/ubuntu/repos/borja-ut4.git
+GIT_WORK_TREE=/home/ubuntu/repos/borja-ut4
+
+# Crear carpeta de trabajo si no existe
+if [ ! -d "$GIT_WORK_TREE" ]; then
+    mkdir -p "$GIT_WORK_TREE"
+fi
+
+# Actualizar el código desde la rama main
+git --git-dir="$GIT_DIR" --work-tree="$GIT_WORK_TREE" checkout -f main
+
+# Entrar en la carpeta de trabajo
+cd "$GIT_WORK_TREE"
+
+# Reiniciar contenedores Docker
+docker compose down
+docker compose up -d

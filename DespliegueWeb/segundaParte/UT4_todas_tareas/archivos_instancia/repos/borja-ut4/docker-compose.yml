@@ -1,0 +1,20 @@
+version: "3.8"
+
+services:
+  web:
+    image: nginx:alpine
+    ports:
+      - "8080:80"
+    volumes:
+      - ./index.html:/usr/share/nginx/html/index.html
+    networks:
+      - caddy
+    labels:
+      caddy: ut4.borjabn-clase.duckdns.org, ut4.borjabn-clase.mooo.com
+      caddy.reverse_proxy: "{{upstreams 80}}"
+
+networks:
+  interna:
+    external: true
+  caddy:
+    external: true

@@ -1,0 +1,302 @@
+/* =======================================================
+   1. IDENTIDAD VISUAL: FUENTES Y COLORES
+   ======================================================= */
+
+/* Cargamos la tipografía personalizada de la marca (no de sistema) */
+@font-face {
+  font-family: "HandelsonFour";
+  src: url("../fonts/handelson-1/Handelson-Four.otf") format("opentype");
+}
+
+/* Título principal con gran impacto visual */
+.hero-title {
+  font-family: "HandelsonFour", Arial, sans-serif;
+  font-size: 4rem;      /* Tamaño muy grande */
+  color: #6B4F2D;       /* Marrón corporativo */
+  font-weight: normal;
+}
+
+/**************************************************************************************/
+/* ESTILOS GENERALES (RESET Y BASE) */
+/**************************************************************************************/
+body {
+  font-family: Arial, sans-serif; /* Fuente de respaldo para lectura */
+  background-color: #FFEED7;      /* Color crema: menos fatiga visual que el blanco */
+  color: #333333;                 /* Texto gris oscuro para contraste */
+  margin: 0;                      /* Elimina márgenes del navegador */
+  overflow-x: hidden;             /* Evita scroll horizontal accidental */
+  scroll-behavior: smooth;        /* UX: Desplazamiento suave al navegar */
+}
+
+/* Estilos base para enlaces */
+a {
+  color: #7A5A38;
+}
+
+/* Feedback visual: cambio de color al pasar el ratón */
+a:hover {
+  color: #F2C94C;
+}
+
+/**************************************************************************************/
+/* 2. JERARQUÍA TIPOGRÁFICA */
+/**************************************************************************************/
+h1 {
+  font-family: "HandelsonFour", Arial, sans-serif;
+  font-size: 2.5rem;
+  font-weight: bold;
+  color: #6B4F2D;
+}
+
+h2 {
+  font-family: "HandelsonFour", Arial, sans-serif;
+  font-size: 1.8rem;
+  font-weight: 600;
+  color: #6B4F2D;
+}
+
+h3 {
+  font-family: "HandelsonFour", Arial, sans-serif;
+  font-size: 1.4rem;
+  color: #333333;
+}
+
+p {
+  font-size: 16px;
+  color: #666666;
+  line-height: 1.6; /* Espaciado entre líneas para mejor legibilidad */
+}
+
+/**************************************************************************************/
+/* 3. NAVEGACIÓN (FLEXBOX) */
+/**************************************************************************************/
+nav {
+  background-color: #EFE6D8;
+  height: 80px;
+  
+  /* FLEXBOX: Clave para alinear elementos horizontalmente */
+  display: flex;
+  align-items: center; /* Centrado vertical perfecto */
+  padding: 0 20px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Sombra sutil */
+}
+
+.menu {
+  display: flex;    /* Elementos de lista en fila */
+  align-items: center;
+  list-style: none; /* Quitamos los puntos de lista */
+  gap: 25px;        /* Espacio inteligente entre botones */
+  margin: 0;
+  padding: 0;
+}
+
+.menu .logo {
+  flex-shrink: 0; /* Evita que el logo se deforme si falta espacio */
+}
+
+.menu .logo img {
+  height: 60px;
+  width: auto;
+  display: block;
+}
+
+.menu a {
+  text-decoration: none;
+  color: #6B4F2D;
+  font-weight: bold;
+}
+
+/* Estilo de botón para los enlaces del menú */
+.menu li a span {
+  padding: 10px 15px;
+  border-radius: 6px;
+  transition: background-color 0.3s ease; /* Transición suave */
+}
+
+/* MICRO-INTERACCIÓN: El fondo se ilumina al hacer hover */
+.menu li a:hover span {
+  background-color: #F2C94C;
+  color: #6B4F2D;
+}
+
+/* RESPONSIVE NAV: Ajustes para tablets/móviles */
+@media (max-width: 768px) {
+  nav {
+    height: auto;
+    padding: 15px;
+  }
+  .menu {
+    flex-direction: column; /* Cambia de fila a columna (vertical) */
+    gap: 10px;
+  }
+  .menu .logo img {
+    height: 55px;
+  }
+}
+
+/**************************************************************************************/
+/* 4. ELEMENTOS DE INTERACCIÓN (BOTONES) */
+/**************************************************************************************/
+.btn-principal,
+button {
+  background-color: #5A3E22; /* Color oscuro para destacar (CTA) */
+  color: #FAFAF7;
+  border: none;
+  padding: 10px 20px;
+  border-radius: 6px;
+  cursor: pointer;           /* Icono de manita */
+  font-weight: bold;
+  transition: background-color 0.3s ease;
+}
+
+.btn-principal:hover,
+button:hover {
+  background-color: #E0B93C; /* Feedback amarillo al usuario */
+  color: #6B4F2D;
+}
+
+/**************************************************************************************/
+/* SECCIÓN HERO */
+/**************************************************************************************/
+.hero {
+  background-color: #EFE6D8;
+  padding: 60px 0;
+}
+
+.hero .lead {
+  font-size: 1.1rem;
+  color: #666666;
+}
+
+/**************************************************************************************/
+/* CONTENEDORES Y ESTRUCTURA */
+/**************************************************************************************/
+.contenido {
+  max-width: 800px; /* Ancho máximo de lectura */
+  margin: auto;     /* Centrado automático en pantalla */
+  padding: 20px;
+}
+
+.valores {
+  background-color: #EFE6D8;
+  padding: 30px;
+  border-radius: 10px;
+}
+
+.valores h2 {
+  text-align: center;
+}
+
+.valores p {
+  text-align: justify;
+}
+
+/**************************************************************************************/
+/* 5. GRID AVANZADO Y ANIMACIONES (GATITOS) */
+/**************************************************************************************/
+.gatitos {
+  display: flex;          /* Contenedor flexible */
+  flex-wrap: wrap;        /* Permite saltar de línea si no caben */
+  gap: 20px;              /* "Canales" entre tarjetas */
+  padding: 20px;
+  justify-content: center; 
+  animation: fadeIn 1.5s forwards ease; /* Animación de entrada */
+}
+
+/* DEFINICIÓN DE LA ANIMACIÓN FADE-IN */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(10px); /* Empieza desplazado abajo */
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);    /* Termina en su sitio */
+  }
+}
+
+/* TARJETA INDIVIDUAL */
+.gatito1 {
+  background-color: #FFFFFF;
+  border-radius: 10px;
+  padding: 15px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Profundidad (sombra) */
+  transition: transform 0.3s ease;
+  align-items: center; /* Centra TODO el contenido horizontalmente */ 
+  text-align: center; /* Opcional: centra textos también */
+  
+  /* CÁLCULO DE COLUMNAS (PC):
+     25% = 4 columnas. Restamos 20px para compensar el gap */
+  flex: 0 1 calc(25% - 20px); 
+  min-width: 250px; 
+}
+
+/* EFECTO ZOOM AL PASAR EL MOUSE */
+.gatito1:hover {
+  transform: scale(1.05);
+}
+
+.gatito1 img {
+  max-width: 100%;       /* Imagen responsive */
+  border-radius: 8px;
+  display: block;
+  margin-bottom: 10px;
+}
+
+.gatito1 h2 {
+  color: #6B4F2D;
+  margin-top: 0;
+}
+
+.gatito1 p {
+  color: #666666;
+}
+
+/* =======================================================
+   6. RESPONSIVE DESIGN (ADAPTACIÓN MÓVIL)
+   ======================================================= */
+
+/* TABLETS: Cambiamos a 2 columnas */
+@media (max-width: 992px) {
+  .gatito1 {
+    flex: 0 1 calc(50% - 20px); /* 50% = 2 por fila */
+  }
+}
+
+/* MÓVILES: Cambiamos a 1 columna */
+@media (max-width: 576px) {
+  .gatito1 {
+    flex: 0 1 100%; /* Ocupa todo el ancho */
+  }
+}
+
+/**************************************************************************************/
+/* FORMULARIO Y FOOTER */
+/**************************************************************************************/
+form {
+  background-color: #FFFFFF;
+}
+
+form .form-label {
+  color: #6B4F2D;
+  font-weight: bold;
+}
+
+.footer {
+  background-color: #6B4F2D;
+  color: #FAFAF7;
+  text-align: center;
+  padding: 15px;
+  margin-top: 40px;
+}
+.footer p {
+  background-color: #6B4F2D;
+  color: #FAFAF7;
+  text-align: center;
+}
+
+.list-group-item,
+.table {
+  background-color: transparent;
+  color: #333333;
+}
