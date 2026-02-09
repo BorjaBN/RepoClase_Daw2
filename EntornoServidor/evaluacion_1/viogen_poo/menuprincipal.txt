@@ -1,0 +1,85 @@
+<?php
+session_start();
+
+// Verificar que el usuario está logueado
+if (!isset($_SESSION['usuario'])) {
+    // Si no hay sesión, redirigir al login
+    header("Location: index.php?controlador=ControladorLogin&metodo=verLogin");
+    exit;
+}
+
+// Incluir servicio BD
+require_once('./servicios/BD.php');
+$bd = new BD();
+
+$resultados = [];
+$busqueda = "";
+
+// Si se ha enviado el formulario de búsqueda
+if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+    $busqueda = trim($_POST['busqueda'] ?? '');
+
+    if ($busqueda !== "") {
+        $sql = "SELECT v.nombre, v.apellidos, a.tipo, a.fecha 
+                FROM victima v
+                JOIN agresion a ON v.id = a.id_victima
+                WHERE v.nombre LIKE ? 
+                   OR v.apellidos LIKE ? 
+                   OR v.telefono LIKE ? 
+                   OR v.observaciones LIKE ? 
+                   OR a.observaciones LIKE ?
+                ORDER BY a.fecha DESC";
+
+        $parametros = array_fill(0, 5, "%$busqueda%");
+        $resultados = $bd->seleccionar($sql, $parametros);
+    }
+}
+
+// Logout
+if (isset($_GET['logout'])) {
+    session_destroy();
+    header("Location: index.php?controlador=ControladorLogin&metodo=verLogin");
+    exit;
+}
+?>
+
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>Menú Principal</title>
+</head>
+<body>
+    <h1>Menú Principal</h1>
+
+    <!-- Botón Logout -->
+    <form method="get" action="menuPrincipal.php">
+        <button type="submit" name="logout" value="1">Logout</button>
+    </form>
+
+    <h2>Informe de Agresiones</h2>
+    <form method="post" action="menuPrincipal.php">
+        <input type="text" name="busqueda" placeholder="Buscar..." value="<?php echo htmlspecialchars($busqueda); ?>">
+        <button type="submit">Buscar</button>
+    </form>
+
+    <?php if (!empty($resultados)): ?>
+        <table border="1" cellpadding="5" cellspacing="0">
+            <tr>
+                <th>Nombre completo de la víctima</th>
+                <th>Tipo de agresión</th>
+                <th>Fecha de la agresión</th>
+            </tr>
+            <?php foreach ($resultados as $fila): ?>
+                <tr>
+                    <td><?php echo htmlspecialchars($fila['nombre'].' '.$fila['apellidos']); ?></td>
+                    <td><?php echo htmlspecialchars($fila['tipo']); ?></td>
+                    <td><?php echo htmlspecialchars($fila['fecha']); ?></td>
+                </tr>
+            <?php endforeach; ?>
+        </table>
+    <?php elseif ($busqueda !== ""): ?>
+        <p>No se encontraron resultados para "<?php echo htmlspecialchars($busqueda); ?>".</p>
+    <?php endif; ?>
+</body>
+</html>
